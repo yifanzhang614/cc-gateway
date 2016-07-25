@@ -7,12 +7,23 @@
 3.依赖于Netflix的很多套件，我们可以非常方便的做负载均衡，服务化，监控和服务治理，如果使用nginx，需要开发的工作量太大，或者是我不了解这块有类似的开源解决方法
 4.nginx的系统性能不用多说，单机肯定会高于cc-gateway，cc-gateway可用于性能不那么敏感，或者可以分布式部署多个，或者需要很多定制化的功能，而又不想或没条件基于nginx开发的情况
 
+
 主要功能：
 1.基于zuul的网关过滤服务，用来做策略、规则的动态的发布或回滚
+
+
 2.基于archaius，来做配置的动态更新
+
+
 3.基于ribbon实现网关对内部服务的负责均衡
+
+
 4.基于Hystrix的服务访问控制和监控，同时对每个服务的参数可以定制
+
+
 5.基于yaml的自定义服务访问配置，支持服务Id的抽象
+
+
 zuul:
   ignoredPatterns:
     - /**/admin/**
@@ -51,4 +62,6 @@ services:
       MaxAutoRetries: 1
       MaxHttpConnectionsPerHost: 200
       MaxTotalHttpConnections: 500
+
+
 6.基于HttpClient的反向代理实现，后面可以替换为netty，提高性能

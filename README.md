@@ -52,36 +52,90 @@ zuul:
       
       
     second:
+    
+    
       path: /second/**
+      
+      
       retryable: true
+      
+      
       #serviceId 和url只能取其一
+      
+      
       serviceId: service1
+      
+      
     third:
+    
+    
       path: /third/**
+      
+      
       retryable: true
-      serviceId: portal_service
+      
+      
+      serviceId: service2
+      
+      
     legacy:
+    
+    
       path: /**
+      
+      
       url: forward:/error/
-
+      
+      
 services:
+
+
   service1:
+  
+  
     ribbon:
+    
+    
       listOfServers: http://httpbin.org, https://httpbin.org:443
+      
+      
       ConnectTimeout: 50000
+      
+      
       ReadTimeout: 50000
+      
+      
       MaxAutoRetries: 1
+      
+      
       MaxHttpConnectionsPerHost: 200
+      
+      
       MaxTotalHttpConnections: 500
-
+      
+      
   service2:
+  
+  
     ribbon:
+    
+    
       listOfServers: http://www.baidu.com, http://www.baidu.com
+      
+      
       ConnectTimeout: 50000
+      
+      
       ReadTimeout: 50000
+      
+      
       MaxAutoRetries: 1
+      
+      
       MaxHttpConnectionsPerHost: 200
+      
+      
       MaxTotalHttpConnections: 500
-
-
+      
+      
 6.基于HttpClient的反向代理实现，后面可以替换为netty，提高性能

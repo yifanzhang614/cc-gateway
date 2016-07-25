@@ -3,8 +3,14 @@
 
 重新开发这个组件的原因：
 1.nginx的开发使用的是C或者lua这样的语言，需要有专门这个技术栈的人
+
+
 2.我们的主要系统语言是Java，如果对服务网关单独使用一种语言，不好做统一的控制和管理
+
+
 3.依赖于Netflix的很多套件，我们可以非常方便的做负载均衡，服务化，监控和服务治理，如果使用nginx，需要开发的工作量太大，或者是我不了解这块有类似的开源解决方法
+
+
 4.nginx的系统性能不用多说，单机肯定会高于cc-gateway，cc-gateway可用于性能不那么敏感，或者可以分布式部署多个，或者需要很多定制化的功能，而又不想或没条件基于nginx开发的情况
 
 
@@ -25,12 +31,26 @@
 
 
 zuul:
+
+
   ignoredPatterns:
+  
+  
     - /**/admin/**
+    
+    
   routes:
+  
+  
     first:
+    
+    
       path: /first/**
+      
+      
       url: http://httpbin.org/
+      
+      
     second:
       path: /second/**
       retryable: true

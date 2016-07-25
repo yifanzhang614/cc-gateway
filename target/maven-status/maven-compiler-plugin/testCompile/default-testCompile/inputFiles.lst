@@ -1,0 +1,10 @@
+/Users/yifanzhang/test/cc-gateway/src/test/java/com/cc/snp/gateway/filters/route/SendForwardFilterTests.java
+/Users/yifanzhang/test/cc-gateway/src/test/java/com/cc/snp/gateway/filters/route/ribbon/util/SpringClientFactoryTests.java
+/Users/yifanzhang/test/cc-gateway/src/test/java/com/cc/snp/gateway/filters/route/ribbon/util/ZonePreferenceServerListFilterTests.java
+/Users/yifanzhang/test/cc-gateway/src/test/java/com/cc/snp/gateway/filters/route/ribbon/util/EnvironmentTestUtils.java
+/Users/yifanzhang/test/cc-gateway/src/test/java/com/cc/snp/gateway/filters/route/ribbon/apache/RibbonApacheHttpResponseTests.java
+/Users/yifanzhang/test/cc-gateway/src/test/java/com/cc/snp/gateway/filters/route/ribbon/apache/RibbonLoadBalancingHttpClientTests.java
+/Users/yifanzhang/test/cc-gateway/src/test/java/com/cc/snp/gateway/filters/route/ribbon/util/RibbonClientConfigurationTests.java
+/Users/yifanzhang/test/cc-gateway/src/test/java/com/cc/snp/gateway/filters/post/SendErrorFilterTests.java
+/Users/yifanzhang/test/cc-gateway/src/test/java/com/cc/snp/gateway/filters/ZuulPropertiesTests.java
+/Users/yifanzhang/test/cc-gateway/src/test/java/com/cc/snp/gateway/util/YamlTest.java

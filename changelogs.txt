@@ -1,0 +1,16 @@
+2016-08-02
+
+1. 新增用户认证
+    1.1 三种认证方式:
+        1.1.1 基于参数,无需认证
+        1.1.2 基于username,password方式认证
+        1.1.3 基于头信息签名方式认证
+
+    1.2 新增认证异常
+        所有异常均继承于AuthenticationRuntimeException
+
+    1.3 异常错误翻译
+        置于groovy/filters/error包中
+
+
+--------------

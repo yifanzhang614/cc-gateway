@@ -101,7 +101,7 @@ public class StartServer implements ServletContextListener {
         if (scriptRoot.length() > 0) scriptRoot = scriptRoot + File.separator;
         try {
             FilterFileManager.setFilenameFilter(new GroovyFileFilter());
-            FilterFileManager.init(5, scriptRoot + "pre", scriptRoot + "route", scriptRoot + "post");
+            FilterFileManager.init(5, scriptRoot + "pre", scriptRoot + "route", scriptRoot + "post", scriptRoot + "error");
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

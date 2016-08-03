@@ -4,7 +4,7 @@ zuul:
   routes:
     first:
       path: /first/**
-      url: http://httpbin.org/
+      url: https://www.baidu.com
     second:
       path: /second/**
       retryable: true
@@ -38,3 +38,8 @@ services:
       MaxTotalHttpConnections: 500
 
 
+
+User:
+  1:
+    name : icbc
+    secret: xxxxx

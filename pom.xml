@@ -14,7 +14,7 @@
     <properties>
         <encoding>UTF-8</encoding>
         <jdk.version>1.6</jdk.version>
-        <jdk.home>${env.JAVA_7_HOME}</jdk.home>
+        <!--<jdk.home>${env.JAVA_7_HOME}</jdk.home>-->
         <slf4j.version>1.7.5</slf4j.version>
         <org.springframework-version>4.1.8.RELEASE</org.springframework-version>
 
@@ -94,8 +94,6 @@
             <groupId>com.netflix.zuul</groupId>
             <artifactId>zuul-core</artifactId>
             <version>1.2.1</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/src/main/resources/lib/zuul-core.jar</systemPath>
             <exclusions>
                 <exclusion>
                     <artifactId>groovy-all</artifactId>
@@ -260,21 +258,21 @@
                             <filtering>true</filtering>
                             <targetPath>WEB-INF/classes</targetPath>
                         </resource>
-                        <resource>
-                            <directory>src/main/resources/lib/</directory>
-                            <targetPath>WEB-INF/lib/</targetPath>
-                            <includes>
-                                <include>**/zuul-core.jar</include>
-                            </includes>
-                        </resource>
-                        <resource>
-                            <directory>src/main/resources/spring/</directory>
-                            <targetPath>WEB-INF/classes/</targetPath>
-                            <includes>
-                                <include>*.xml</include>
-                                <include>*.properties</include>
-                            </includes>
-                        </resource>
+                        <!--<resource>-->
+                            <!--<directory>src/main/resources/lib/</directory>-->
+                            <!--<targetPath>WEB-INF/lib/</targetPath>-->
+                            <!--<includes>-->
+                                <!--<include>**/zuul-core.jar</include>-->
+                            <!--</includes>-->
+                        <!--</resource>-->
+                        <!--<resource>-->
+                            <!--<directory>src/main/resources/spring/</directory>-->
+                            <!--<targetPath>WEB-INF/classes/</targetPath>-->
+                            <!--<includes>-->
+                                <!--<include>*.xml</include>-->
+                                <!--<include>*.properties</include>-->
+                            <!--</includes>-->
+                        <!--</resource>-->
                     </webResources>
                 </configuration>
 
@@ -301,7 +299,7 @@
                         <exclude>**/*$*</exclude>
                     </excludes>
                     <argLine>-Dfile.encoding=${encoding}</argLine>
-                    <jvm>${jdk.home}/bin/java</jvm>
+                    <!--<jvm>${jdk.home}/bin/java</jvm>-->
                     <forkMode>once</forkMode>
                 </configuration>
             </plugin>

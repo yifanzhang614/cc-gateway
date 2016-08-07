@@ -1,6 +1,8 @@
+import com.github.api.gateway.authc.authenticator.ModularProviderAuthenticator
 import com.github.api.gateway.authc.exception.AuthenticationException
 import com.github.api.gateway.filters.ZuulFilterType
-import com.github.api.gateway.support.auth.AuthenticatingResult
+import com.github.api.gateway.provider.properties.PropertyCcSignatureProvider
+import com.github.api.gateway.provider.properties.PropertyUsernamePasswordProvider
 import com.netflix.zuul.ZuulFilter
 import com.netflix.zuul.context.RequestContext
 
@@ -11,7 +13,7 @@ import com.netflix.zuul.context.RequestContext
 /**
  * Is authentication Success
  */
-class AuthenticateResultFilter extends ZuulFilter {
+class AuthenticateFilter extends ZuulFilter {
 
     @Override
     String filterType() {
@@ -31,10 +33,16 @@ class AuthenticateResultFilter extends ZuulFilter {
     @Override
     Object run() throws AuthenticationException {
         RequestContext ctx = RequestContext.getCurrentContext();
-        AuthenticatingResult result = ctx.get(AuthenticatingResult.AUTHENTICATING_RESULT)
-        if(result.authenticatePass()) {
-            return true;
-        }
-        throw new AuthenticationException();
+        def authenticator = newModularProviderAuthenticator();
+        authenticator.authenticate(ctx.getRequest());
     }
+
+    ModularProviderAuthenticator newModularProviderAuthenticator() {
+        ModularProviderAuthenticator authenticator = new ModularProviderAuthenticator();
+        authenticator.getProviders().add(new PropertyUsernamePasswordProvider());
+        authenticator.getProviders().add(new PropertyCcSignatureProvider());
+        return authenticator;
+    }
+
+
 }

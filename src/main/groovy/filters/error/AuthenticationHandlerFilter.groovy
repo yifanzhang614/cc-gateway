@@ -1,12 +1,6 @@
 import com.fasterxml.jackson.databind.ObjectMapper
-import com.github.api.gateway.exception.authentication.AuthenticationRuntimeException
-import com.github.api.gateway.exception.authentication.IncorrectCredentialException
-import com.github.api.gateway.exception.authentication.IncorrectSignatureException
-import com.github.api.gateway.exception.authentication.IncorrectTimestampRangeException
-import com.github.api.gateway.exception.authentication.UnknownAccountException
-import com.github.api.gateway.exception.authentication.UnknownAppIdException
+import com.github.api.gateway.authc.exception.*
 import com.github.api.gateway.filters.ZuulFilterType
-import com.github.api.gateway.support.auth.AuthenticatingResult
 import com.github.api.gateway.support.response.ResponseErrorConstant
 import com.github.api.gateway.support.response.ResponseWrapper
 import com.netflix.zuul.ZuulFilter
@@ -41,17 +35,17 @@ class AuthenticationHandlerFilter extends ZuulFilter{
         Throwable ex = ctx.getThrowable()
         if(ex != null) {
             Throwable t = ex.getCause();
-            if(t instanceof IncorrectTimestampRangeException) {
+            if(t instanceof ExpiredTimestampException) {
                 rw = ResponseWrapper.error(ResponseErrorConstant.TIMESTAMP_EXPIRED)
-            } else if(t instanceof UnknownAppIdException) {
+            } else if(t instanceof UnknownAppKeyException) {
                 rw = ResponseWrapper.error(ResponseErrorConstant.UNKNOWN_APPID)
             } else if(t instanceof IncorrectSignatureException) {
                 rw = ResponseWrapper.error(ResponseErrorConstant.INCORRECT_SIGNATURE)
             } else if(t instanceof UnknownAccountException) {
                 rw = ResponseWrapper.error(ResponseErrorConstant.UNKNOWN_ACCOUNT)
-            } else if(t instanceof IncorrectCredentialException) {
+            } else if(t instanceof IncorrectCredentialsException) {
                 rw = ResponseWrapper.error(ResponseErrorConstant.INCORRECT_CREDENTIAL)
-            } else if(t instanceof AuthenticationRuntimeException) {
+            } else if(t instanceof AuthenticationException) {
                 rw = ResponseWrapper.error(ResponseErrorConstant.AUTHENTICATE_FAIL)
             }
             if(rw != null) {

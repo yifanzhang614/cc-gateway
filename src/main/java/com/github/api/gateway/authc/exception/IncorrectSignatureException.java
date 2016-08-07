@@ -3,7 +3,7 @@ package com.github.api.gateway.authc.exception;
 /**
  * Created by chdyan on 16/8/3.
  */
-public class IncorrectSignatureException extends HeaderAuthenticationException {
+public class IncorrectSignatureException extends CredentialsException {
     public IncorrectSignatureException() {
     }
 

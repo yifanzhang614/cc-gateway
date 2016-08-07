@@ -14,3 +14,32 @@
 
 
 --------------
+
+
+
+2016-08-08
+
+1. 用户认证改造
+    1.1 手动设置是否开启认证
+    1.2 抽象认证方式
+    1.3 抽象出统一密码认证接口
+    1.4 异常分层
+
+2.具体使用
+    1.1 AuthenticationToken 为认证前的参数对象， AuthenticationInfo为认证成功的返回对象。可做缓存，放入
+        session等。现在暂无实现。
+    1.2 使用ModularProviderAuthenticator，多模块提供认证。比如现在的UsernamePassword和Header信息认证，
+    可以提供多种认证模式，和认证策略
+    1.3 每一种认证模式（比如UsernamePassword）需要自定义实现Provider接口，如UsernamePasswordProvider(
+    现在已经有UsernamePasswordProvider和CcSignatureAuthencatingProvider的抽象。 具体数据源
+    可以自定义实现。比如PropertyCcSignatureProvider和PropertyUsernamePasswordProvider都是从yml文件
+    转成properties获取数据而来。 每一个Provider需要一个Producer 生产出AuthenticationToken.. 因为认证
+    方式不一样，Token内容不一样，没办法重用一个Token，使用多途径认证（数据库认证，yml认证，接口认证，LDAP认证）
+    所以需要设置绑定一个实现。
+    1.4 认证策略有：1.第一个经过认证，不论成功或失败，立即返回。 2.返回第一个成功的，失败的不返回，除非所有
+    认证方式都用完。3.所有认证途径都通过（暂无实现）， 4.至少一个成功，所有认证都要走一遍，把成功的账户合并到
+    Collection里面。
+
+3. 不足
+   1. 不够动态化，如果需要上线新的认证策略，目前为Java写的，需要重启服务器，目前对groovy类脚步直接的调用不会，
+   没搞明白， 后续明白使用groovy改造。

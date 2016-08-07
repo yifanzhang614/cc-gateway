@@ -3,7 +3,7 @@ package com.github.api.gateway.authc.exception;
 /**
  * Created by chdyan on 16/8/3.
  */
-public class IncorrectCredentialsException extends AuthenticationException {
+public class IncorrectCredentialsException extends CredentialsException {
     public IncorrectCredentialsException() {
     }
 

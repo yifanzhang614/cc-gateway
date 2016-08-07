@@ -3,7 +3,7 @@ package com.github.api.gateway.authc.exception;
 /**
  * Created by chdyan on 16/8/3.
  */
-public class UnknownAccountException extends AuthenticationRuntimeException {
+public class UnknownAccountException extends AccountException {
     public UnknownAccountException() {
     }
 

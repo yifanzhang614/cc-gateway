@@ -5,5 +5,6 @@ package com.github.api.gateway.provider;
  */
 
 public interface NameCapable {
+
     String getName();
 }

@@ -41,7 +41,11 @@ public class SimpleAuthenticationInfo implements MergableAuthenticationInfo {
      * @param providerName
      */
     public SimpleAuthenticationInfo(Object principal, Object credentials, String providerName) {
-        this.principals = new SimplePrincipalCollection(principal, providerName);
+        if(principal instanceof PrincipalCollection) {
+            this.principals = (PrincipalCollection) principal;
+        } else {
+            this.principals = new SimplePrincipalCollection(principal, providerName);
+        }
         this.credentials = credentials;
     }
 
@@ -170,7 +174,7 @@ public class SimpleAuthenticationInfo implements MergableAuthenticationInfo {
      * @return <code>{@link #getPrincipals() principals}.toString()</code>
      */
     public String toString() {
-        return principals.toString();
+        return principals != null ? principals.toString() : null;
     }
 
 }

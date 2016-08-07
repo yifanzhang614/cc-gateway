@@ -29,7 +29,7 @@ import java.net.URI;
  *  - ILoadBalancer ribbonLoadBalancer: ZoneAwareLoadBalancer
  *
  *  You can define another ribbon client configuration(inherit this one or a complete new one)
- * and init it in the SpringClientFactory.
+ * and init it any the SpringClientFactory.
  *
  * Created by yifanzhang.
  */
@@ -75,7 +75,7 @@ public class RibbonClientConfiguration {
 
     /**
      * Create a Netflix {@link RestClient} integrated with Ribbon if none already exists
-     * in the application context. It is not required for Ribbon to work properly and is
+     * any the application context. It is not required for Ribbon to work properly and is
      * therefore created lazily if ever another component requires it.
      *
      * @param config             the configuration to use by the underlying Ribbon instance

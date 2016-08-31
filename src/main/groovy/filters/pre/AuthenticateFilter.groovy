@@ -7,11 +7,8 @@ import com.netflix.zuul.ZuulFilter
 import com.netflix.zuul.context.RequestContext
 
 /**
- * Created by chdyan on 16/8/3.
- */
-
-/**
- * Is authentication Success
+ * 对于是否开启认证过滤，更改shouldFilter的值便可以。
+ * 认证Filter，所有的认证过程都是通过ModularProviderAuthenticator来实现的。
  */
 class AuthenticateFilter extends ZuulFilter {
 
@@ -25,6 +22,10 @@ class AuthenticateFilter extends ZuulFilter {
         return 15
     }
 
+    /**
+     * TODO 改进，通过环境变量控制。
+     * @return
+     */
     @Override
     boolean shouldFilter() {
         return true
@@ -37,6 +38,10 @@ class AuthenticateFilter extends ZuulFilter {
         authenticator.authenticate(ctx.getRequest());
     }
 
+    /**
+     * 创建多模块多验证提供者认证方式，认证的顺序与加入认证提供者的顺序一致。
+     * @return
+     */
     ModularProviderAuthenticator newModularProviderAuthenticator() {
         ModularProviderAuthenticator authenticator = new ModularProviderAuthenticator();
         authenticator.getProviders().add(new PropertyUsernamePasswordProvider());

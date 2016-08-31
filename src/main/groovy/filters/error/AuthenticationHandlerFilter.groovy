@@ -3,13 +3,14 @@ import com.github.api.gateway.authc.exception.*
 import com.github.api.gateway.filters.ZuulFilterType
 import com.github.api.gateway.support.response.ResponseErrorConstant
 import com.github.api.gateway.support.response.ResponseWrapper
+import com.netflix.config.DynamicPropertyFactory
 import com.netflix.zuul.ZuulFilter
 import com.netflix.zuul.context.RequestContext
 
 import javax.servlet.http.HttpServletResponse
 
 /**
- * Created by chdyan on 16/8/3.
+ * 认证出错处理过滤器，处理所有认证出错的信息。
  */
 class AuthenticationHandlerFilter extends ZuulFilter{
 
@@ -25,7 +26,7 @@ class AuthenticationHandlerFilter extends ZuulFilter{
 
     @Override
     boolean shouldFilter() {
-        return true
+        return DynamicPropertyFactory.getInstance().getBooleanProperty("authticate", true)
     }
 
     @Override

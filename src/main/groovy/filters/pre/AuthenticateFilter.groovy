@@ -3,6 +3,7 @@ import com.github.api.gateway.authc.exception.AuthenticationException
 import com.github.api.gateway.filters.ZuulFilterType
 import com.github.api.gateway.provider.properties.PropertyCcSignatureProvider
 import com.github.api.gateway.provider.properties.PropertyUsernamePasswordProvider
+import com.netflix.config.DynamicPropertyFactory
 import com.netflix.zuul.ZuulFilter
 import com.netflix.zuul.context.RequestContext
 
@@ -24,11 +25,13 @@ class AuthenticateFilter extends ZuulFilter {
 
     /**
      * TODO 改进，通过环境变量控制。
+     * 目前通过archaius库获取环境变量来改变
+     * 
      * @return
      */
     @Override
     boolean shouldFilter() {
-        return true
+        return DynamicPropertyFactory.getInstance().getBooleanProperty("authticate", true)
     }
 
     @Override

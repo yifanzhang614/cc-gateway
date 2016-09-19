@@ -3,6 +3,8 @@ package com.github.api.gateway.authc.token;
 import com.github.api.gateway.authc.HostAuthenticationToken;
 import com.github.api.gateway.util.StringUtils;
 
+import java.util.Map;
+
 /**
  * Created by chongdi.yang on 2016/8/7.
  */
@@ -13,6 +15,7 @@ public class CcAppSignatureToken implements HostAuthenticationToken {
     private Long timestamp;  //五分钟内有效
     private String signature;
     private String host;
+    private Map<String, String[]> params;
 
     public CcAppSignatureToken() {}
 
@@ -73,6 +76,14 @@ public class CcAppSignatureToken implements HostAuthenticationToken {
     @Override
     public Object getCredentials() {
         return getSignature();
+    }
+
+    public Map<String, String[]> getParams() {
+        return params;
+    }
+
+    public void setParams(Map<String, String[]> params) {
+        this.params = params;
     }
 
     public boolean needAuthenticate() {

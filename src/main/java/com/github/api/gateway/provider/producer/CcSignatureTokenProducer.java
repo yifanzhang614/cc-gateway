@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
  */
 public class CcSignatureTokenProducer extends AbstractAuthenticationTokenProducer {
 
-    public static  final String RANDOM = "X-CC-Auth-Nonce";
+    public static  final String RANDOM = "X-CC-Auth-random";
     public static  final String SIGNATURE = "X-CC-Auth-Signature";
     public static  final String TIMESTAMP = "X-CC-Auth-Timestamp";
     public static  final String KEY = "X-CC-Auth-key";

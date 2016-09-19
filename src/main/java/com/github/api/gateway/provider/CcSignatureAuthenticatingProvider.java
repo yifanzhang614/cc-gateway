@@ -9,6 +9,8 @@ import com.github.api.gateway.authc.exception.ExpiredTimestampException;
 import com.github.api.gateway.authc.exception.UnknownAppKeyException;
 import com.github.api.gateway.authc.info.SimpleAuthenticationInfo;
 import com.github.api.gateway.authc.token.CcAppSignatureToken;
+import com.github.api.gateway.provider.producer.AuthenticationTokenProducer;
+import com.github.api.gateway.provider.producer.CcSignatureTokenProducer;
 import com.github.api.gateway.provider.producer.UsernamePasswordTokenProducer;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang.math.LongRange;
@@ -26,11 +28,14 @@ public abstract class CcSignatureAuthenticatingProvider extends AuthenticatingPr
     private int timeRange = FIVE_MINUTE_SECONDS; // 秒为单位
 
     public CcSignatureAuthenticatingProvider() {
-        super(new UsernamePasswordTokenProducer());
+        super(new CcSignatureTokenProducer());
+    }
+    public CcSignatureAuthenticatingProvider(AuthenticationTokenProducer producer) {
+        super(producer);
     }
 
-    public CcSignatureAuthenticatingProvider(CredentialsMatcher credentialsMatcher) {
-        super(new UsernamePasswordTokenProducer(), credentialsMatcher);
+    public CcSignatureAuthenticatingProvider(AuthenticationTokenProducer producer, CredentialsMatcher credentialsMatcher) {
+        super(producer, credentialsMatcher);
     }
 
     private void checkTimeRange(Long timestamp) throws ExpiredTimestampException {

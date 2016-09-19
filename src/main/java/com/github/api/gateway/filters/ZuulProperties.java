@@ -173,8 +173,6 @@ public class ZuulProperties {
          */
         private Set<String> sensitiveHeaders = new LinkedHashSet<String>();
 
-        public ZuulRoute() {
-        }
 
         public ZuulRoute(String text) {
             String location = null;

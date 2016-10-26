@@ -31,7 +31,8 @@ class AuthenticateFilter extends ZuulFilter {
      */
     @Override
     boolean shouldFilter() {
-        return DynamicPropertyFactory.getInstance().getBooleanProperty("authticate", true)
+        false
+//        return DynamicPropertyFactory.getInstance().getBooleanProperty("authticate", false)
     }
 
     @Override

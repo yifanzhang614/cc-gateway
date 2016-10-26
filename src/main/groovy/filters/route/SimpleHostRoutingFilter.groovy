@@ -15,6 +15,7 @@
  */
 package filters.route
 
+import com.github.api.gateway.hystrix.HttpRequestRouteCommand
 import com.netflix.config.DynamicIntProperty
 import com.netflix.config.DynamicPropertyFactory
 import com.netflix.zuul.ZuulFilter
@@ -96,19 +97,6 @@ class SimpleHostRoutingFilter extends ZuulFilter {
         super();
     }
 
-    private static final HttpClientConnectionManager newConnectionManager() {
-        SSLContext sslContext = SSLContexts.createSystemDefault();
-
-        Registry<ConnectionSocketFactory> socketFactoryRegistry = RegistryBuilder.<ConnectionSocketFactory>create()
-                .register("http", PlainConnectionSocketFactory.INSTANCE)
-                .register("https", new SSLConnectionSocketFactory(sslContext))
-                .build();
-
-        HttpClientConnectionManager cm = new PoolingHttpClientConnectionManager(socketFactoryRegistry);
-        cm.setMaxTotal(Integer.parseInt(System.getProperty("zuul.max.host.connections", "200")));
-        cm.setDefaultMaxPerRoute(Integer.parseInt(System.getProperty("zuul.max.host.connections", "20")));
-        return cm;
-    }
 
     @Override
     String filterType() {
@@ -145,6 +133,20 @@ class SimpleHostRoutingFilter extends ZuulFilter {
 
     }
 
+    private static final HttpClientConnectionManager newConnectionManager() {
+        SSLContext sslContext = SSLContexts.createSystemDefault();
+
+        Registry<ConnectionSocketFactory> socketFactoryRegistry = RegistryBuilder.<ConnectionSocketFactory>create()
+                .register("http", PlainConnectionSocketFactory.INSTANCE)
+                .register("https", new SSLConnectionSocketFactory(sslContext))
+                .build();
+
+        PoolingHttpClientConnectionManager cm = new PoolingHttpClientConnectionManager(socketFactoryRegistry);
+        cm.setMaxTotal(Integer.parseInt(System.getProperty("zuul.max.host.connections", "200")));
+        cm.setDefaultMaxPerRoute(Integer.parseInt(System.getProperty("zuul.max.host.connections", "20")));
+        return cm;
+    }
+
     private static final CloseableHttpClient newClient() {
         HttpClientBuilder builder = HttpClientBuilder.create()
         builder.setConnectionManager(newConnectionManager())
@@ -177,7 +179,9 @@ class SimpleHostRoutingFilter extends ZuulFilter {
         }
 
         try {
-            HttpResponse response = forward(httpclient, verb, uri, request, headers, requestEntity)
+            println("Current Thread : " + Thread.currentThread().getName());
+//            HttpResponse response = forward(httpclient, verb, uri, request, headers, requestEntity)
+            HttpResponse response = new HttpRequestRouteCommand(RequestContext.currentContext, httpclient, verb, uri, request, headers, requestEntity).execute();
             Debug.addRequestDebug("ZUUL :: ${uri}")
             Debug.addRequestDebug("ZUUL :: Response statusLine > ${response.getStatusLine()}")
             Debug.addRequestDebug("ZUUL :: Response code > ${response.getStatusLine().statusCode}")

@@ -37,9 +37,9 @@ class AuthenticateFilter extends ZuulFilter {
 
     @Override
     Object run() throws AuthenticationException {
-        RequestContext ctx = RequestContext.getCurrentContext();
-        def authenticator = newModularProviderAuthenticator();
-        authenticator.authenticate(ctx.getRequest());
+        RequestContext ctx = RequestContext.getCurrentContext()
+        def authenticator = newModularProviderAuthenticator()
+        authenticator.authenticate(ctx.getRequest())
     }
 
     /**
@@ -47,10 +47,10 @@ class AuthenticateFilter extends ZuulFilter {
      * @return
      */
     ModularProviderAuthenticator newModularProviderAuthenticator() {
-        ModularProviderAuthenticator authenticator = new ModularProviderAuthenticator();
-        authenticator.getProviders().add(new PropertyUsernamePasswordProvider());
-        authenticator.getProviders().add(new PropertyCcSignatureProvider());
-        return authenticator;
+        ModularProviderAuthenticator authenticator = new ModularProviderAuthenticator()
+        authenticator.getProviders().add(new PropertyUsernamePasswordProvider())
+        authenticator.getProviders().add(new PropertyCcSignatureProvider())
+        authenticator
     }
 
 

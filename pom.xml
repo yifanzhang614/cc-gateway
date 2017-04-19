@@ -17,8 +17,21 @@
         <!--<jdk.home>${env.JAVA_7_HOME}</jdk.home>-->
         <slf4j.version>1.7.5</slf4j.version>
         <org.springframework-version>4.1.8.RELEASE</org.springframework-version>
-
     </properties>
+
+
+    <repositories>
+        <!-- 配置了这儿那么mirror就不需要配置
+            优先级:
+            1. setting.xml mirror最优先
+            2. pom.xml repository 次之
+         -->
+        <repository>
+            <id>Central</id>
+            <name>Central Repository</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+        </repository>
+    </repositories>
 
     <dependencies>
         <dependency> <!-- junit 4.7 -->

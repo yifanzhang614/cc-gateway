@@ -167,10 +167,10 @@ class SimpleHostRoutingFilter extends ZuulFilter {
     }
 
     Object run() {
-        HttpServletRequest request = RequestContext.getCurrentContext().getRequest();
+        HttpServletRequest request = RequestContext.getCurrentContext().getRequest()
         Header[] headers = buildZuulRequestHeaders(request)
-        String verb = getVerb(request);
-        InputStream requestEntity = request.getInputStream();
+        String verb = getVerb(request)
+        InputStream requestEntity = request.getInputStream()
         CloseableHttpClient httpclient = CLIENT.get()
 
         String uri = request.getRequestURI()

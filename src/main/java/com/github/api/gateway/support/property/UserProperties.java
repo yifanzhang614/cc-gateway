@@ -1,7 +1,5 @@
 package com.github.api.gateway.support.property;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.api.gateway.util.Utils;
 
 import java.util.Map;

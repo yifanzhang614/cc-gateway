@@ -4,7 +4,7 @@ zuul:
   routes:
     first:
       path: /first/**
-      url: https://www.baidu.com
+      url: http://shiro.apache.org/download.html
     second:
       path: /second/**
       retryable: true

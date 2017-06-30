@@ -1,8 +1,8 @@
-import com.github.api.gateway.authc.authenticator.ModularProviderAuthenticator
-import com.github.api.gateway.authc.exception.AuthenticationException
+import com.github.gateway.authc.authenticator.ModularProviderAuthenticator
+import com.github.gateway.authc.exception.AuthenticationException
 import com.github.api.gateway.filters.ZuulFilterType
-import com.github.api.gateway.provider.properties.PropertyCcSignatureProvider
-import com.github.api.gateway.provider.properties.PropertyUsernamePasswordProvider
+import com.github.gateway.provider.properties.PropertyCcSignatureProvider
+import com.github.gateway.provider.properties.PropertyUsernamePasswordProvider
 import com.netflix.config.DynamicPropertyFactory
 import com.netflix.zuul.ZuulFilter
 import com.netflix.zuul.context.RequestContext

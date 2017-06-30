@@ -12,7 +12,7 @@
     
     <artifactId>gateway-example</artifactId>
     <packaging>war</packaging>
-    <name>CC Gateway Web</name>
+    <description>Gateway Web Example</description>
 
 
     <properties>
@@ -21,6 +21,18 @@
 
 
     <dependencies>
+
+        <dependency>
+            <groupId>com.github.gateway</groupId>
+            <artifactId>gateway-core</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.gateway</groupId>
+            <artifactId>gateway-security-embed-zuul</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
 
     	<dependency> 
             <groupId>junit</groupId>

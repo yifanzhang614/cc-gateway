@@ -44,14 +44,14 @@ class Stats extends ZuulFilter {
         dumpRequestDebug()
     }
 
-    public void dumpRequestDebug() {
+    void dumpRequestDebug() {
         List<String> rd = (List<String>) RequestContext.getCurrentContext().get("requestDebug");
         rd?.each {
             println("REQUEST_DEBUG::${it}");
         }
     }
 
-    public void dumpRoutingDebug() {
+    void dumpRoutingDebug() {
         List<String> rd = (List<String>) RequestContext.getCurrentContext().get("routingDebug");
         rd?.each {
             println("ZUUL_DEBUG::${it}");

@@ -3,7 +3,7 @@ package com.github.api.gateway.filters;
 import com.github.api.gateway.util.AntPathMatcher;
 import com.github.api.gateway.util.PathMatcher;
 import com.github.api.gateway.util.RequestUtils;
-import com.github.api.gateway.util.StringUtils;
+import com.github.gateway.util.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

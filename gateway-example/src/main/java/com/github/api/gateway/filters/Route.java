@@ -1,6 +1,6 @@
 package com.github.api.gateway.filters;
 
-import com.github.api.gateway.util.StringUtils;
+import com.github.gateway.util.StringUtils;
 import com.google.common.base.Objects;
 
 import java.util.LinkedHashSet;

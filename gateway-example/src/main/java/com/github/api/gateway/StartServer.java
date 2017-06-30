@@ -27,9 +27,9 @@ import com.github.api.gateway.filters.route.ribbon.client.CustomRestRibbonComman
 import com.github.api.gateway.filters.route.ribbon.util.SpringClientFactory;
 import com.github.api.gateway.filters.route.ribbon.RibbonCommandFactory;
 import com.github.api.gateway.filters.route.ribbon.RibbonRoutingFilter;
-import com.github.api.gateway.util.Utils;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github.gateway.util.Utils;
 import com.netflix.config.ConfigurationManager;
 import com.netflix.config.DynamicPropertyFactory;
 import com.netflix.config.DynamicStringProperty;

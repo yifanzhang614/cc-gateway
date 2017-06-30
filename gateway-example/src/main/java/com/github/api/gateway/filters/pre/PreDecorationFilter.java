@@ -4,7 +4,7 @@ import com.github.api.gateway.filters.route.ProxyRequestHelper;
 import com.github.api.gateway.filters.Route;
 import com.github.api.gateway.filters.RouteLocator;
 import com.github.api.gateway.filters.ZuulProperties;
-import com.github.api.gateway.util.StringUtils;
+import com.github.gateway.util.StringUtils;
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.constants.ZuulHeaders;
 import com.netflix.zuul.context.RequestContext;

@@ -1,8 +1,10 @@
+package filters.error
+
 import com.fasterxml.jackson.databind.ObjectMapper
-import com.github.api.gateway.authc.exception.*
+import com.github.gateway.authc.exception.*
 import com.github.api.gateway.filters.ZuulFilterType
-import com.github.api.gateway.support.response.ResponseErrorConstant
-import com.github.api.gateway.support.response.ResponseWrapper
+import com.github.gateway.support.response.ResponseErrorConstant
+import com.github.gateway.support.response.ResponseWrapper
 import com.netflix.config.DynamicPropertyFactory
 import com.netflix.zuul.ZuulFilter
 import com.netflix.zuul.context.RequestContext

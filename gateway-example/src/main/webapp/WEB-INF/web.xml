@@ -9,16 +9,6 @@
     </listener>
 
     <servlet>
-        <servlet-name>TestServlet</servlet-name>
-        <servlet-class>com.github.api.gateway.servlets.TestServlet</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>TestServlet</servlet-name>
-        <url-pattern>/test</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
         <servlet-name>ErrorServlet</servlet-name>
         <servlet-class>com.github.api.gateway.servlets.ErrorServlet</servlet-class>
     </servlet>

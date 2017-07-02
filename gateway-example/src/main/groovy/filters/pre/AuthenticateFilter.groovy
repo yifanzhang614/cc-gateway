@@ -1,9 +1,10 @@
+package filters.pre
+
 import com.github.gateway.authc.authenticator.ModularProviderAuthenticator
 import com.github.gateway.authc.exception.AuthenticationException
 import com.github.api.gateway.filters.ZuulFilterType
 import com.github.gateway.provider.properties.PropertyCcSignatureProvider
 import com.github.gateway.provider.properties.PropertyUsernamePasswordProvider
-import com.netflix.config.DynamicPropertyFactory
 import com.netflix.zuul.ZuulFilter
 import com.netflix.zuul.context.RequestContext
 
@@ -31,7 +32,7 @@ class AuthenticateFilter extends ZuulFilter {
      */
     @Override
     boolean shouldFilter() {
-        true
+        false
 //        return DynamicPropertyFactory.getInstance().getBooleanProperty("authticate", false)
     }
 

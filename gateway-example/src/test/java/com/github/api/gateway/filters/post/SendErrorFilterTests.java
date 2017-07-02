@@ -45,7 +45,7 @@ public class SendErrorFilterTests {
         context.set("error.status_code", HttpStatus.NOT_FOUND.value());
         RequestContext.testSetCurrentContext(context);
         SendErrorFilter filter = new SendErrorFilter();
-        filter.setErrorPath("/error");
+        filter.setErrorPath("/filters/error");
         return filter;
     }
 

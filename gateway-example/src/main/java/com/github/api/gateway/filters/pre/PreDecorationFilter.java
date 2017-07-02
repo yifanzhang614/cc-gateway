@@ -40,7 +40,7 @@ public class PreDecorationFilter extends ZuulFilter {
 
     @Override
     public String filterType() {
-        return "pre";
+        return "filters/pre";
     }
 
     @Override

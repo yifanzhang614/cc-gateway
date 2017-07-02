@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 /**
- * Created by yifanzhang.
+ *
  */
 public class ErrorServlet extends HttpServlet {
     @Override

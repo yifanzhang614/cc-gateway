@@ -65,7 +65,7 @@ public class StartServer implements ServletContextListener {
     @Override
     public void contextInitialized(ServletContextEvent sce) {
         log.info("starting server");
-        String realPath = sce.getServletContext().getRealPath("/WEB-INF/classes");
+        String realPath = sce.getServletContext().getRealPath("/WEB-INF/classes/filters/");
         System.setProperty("zuul.filter.root", realPath);
 
         // mocks monitoring infrastructure as we don't need it for this simple app
@@ -102,7 +102,7 @@ public class StartServer implements ServletContextListener {
         if (scriptRoot.length() > 0) scriptRoot = scriptRoot + File.separator;
         try {
             FilterFileManager.setFilenameFilter(new GroovyFileFilter());
-            FilterFileManager.init(5, scriptRoot + "filters/pre", scriptRoot + "route", scriptRoot + "post", scriptRoot + "filters/error");
+            FilterFileManager.init(5, scriptRoot + "pre", scriptRoot + "route", scriptRoot + "post", scriptRoot + "error");
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

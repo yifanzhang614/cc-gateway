@@ -180,8 +180,8 @@ class SimpleHostRoutingFilter extends ZuulFilter {
 
         try {
             println("Current Thread : " + Thread.currentThread().getName());
-//            HttpResponse response = forward(httpclient, verb, uri, request, headers, requestEntity)
-            HttpResponse response = new HttpRequestRouteCommand(RequestContext.currentContext, httpclient, verb, uri, request, headers, requestEntity).execute();
+            HttpResponse response = forward(httpclient, verb, uri, request, headers, requestEntity)
+//            HttpResponse response = new HttpRequestRouteCommand(RequestContext.currentContext, httpclient, verb, uri, request, headers, requestEntity).execute();
             Debug.addRequestDebug("ZUUL :: ${uri}")
             Debug.addRequestDebug("ZUUL :: Response statusLine > ${response.getStatusLine()}")
             Debug.addRequestDebug("ZUUL :: Response code > ${response.getStatusLine().statusCode}")
